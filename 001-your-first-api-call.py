@@ -18,12 +18,12 @@ def main():
     headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token}
 
     def get_filings(page=1):
-        req = requests.get('https://api.apps.corefiling.com/document-service/v1/filings/?pageSize=1000&amp;pageNumber=%s' % page, headers=headers)
+        req = requests.get('https://api.apps.corefiling.com/document-service/v1/filings/?pageSize=1000&pageNumber=%s' % page, headers=headers)
         req.raise_for_status()
         return json.loads(req.text)
 
     print("Here is a list of filings in your account:")
-    for f in get_filings:
+    for f in get_filings():
         print("\t" + (f)["name"])
 
 if __name__=='__main__':
